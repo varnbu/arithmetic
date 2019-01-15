@@ -68,9 +68,31 @@ function linkList() {
             return null
         }
     }
-    this.remove = function (element) { }
-    this.indexOf = function (element) { }
-    this.size = function () { }
+    this.remove = function (element) {
+        let index = this.indexOf(element)
+        return this.removeAt(index)
+    }
+    this.indexOf = function (element) {
+        let index = -1
+        let curr = head
+        while (curr) {
+            index++
+            if (curr.element === element) {
+                return index
+            }
+            curr = curr.next
+        }
+        return -1
+    }
+    this.size = function () {
+        return length
+    }
+    this.getHead = function () {
+        return head
+    }
+    this.isEmpty = function () {
+        return length === 0
+    }
     this.toString = function () {
         let str = ''
         let curr = head
@@ -88,5 +110,10 @@ ls.append(1)
 ls.append(2)
 ls.append(3)
 ls.insert(2, 7)
+console.log(ls.indexOf(1))
+console.log(ls.indexOf(3))
+console.log(ls.indexOf(7))
+console.log(ls.indexOf(72))
+
 let str = ls.toString()
 console.log(str)
