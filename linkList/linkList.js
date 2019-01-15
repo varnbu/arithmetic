@@ -1,3 +1,6 @@
+/**
+ * 单向链表
+ */
 function linkList() {
     /* 链表中的每个元素的结构：包含了指向自己的指针，指向一个元素的指针 */
     let Node = function (element) {
