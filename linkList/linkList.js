@@ -71,10 +71,22 @@ function linkList() {
     this.remove = function (element) { }
     this.indexOf = function (element) { }
     this.size = function () { }
-    this.toString = function () { }
+    this.toString = function () {
+        let str = ''
+        let curr = head
+        while (curr) {
+            str += curr.element + ','
+            curr = curr.next
+        }
+        return str
+    }
     this.print = function () { }
 }
 
 let ls = new linkList()
-ls.append({ id: 1 })
-console.log(ls)
+ls.append(1)
+ls.append(2)
+ls.append(3)
+ls.insert(2, 7)
+let str = ls.toString()
+console.log(str)
