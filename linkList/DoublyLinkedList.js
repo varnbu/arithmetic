@@ -52,8 +52,8 @@ function DoublyLinkList() {
 }
 
 let dbls = new DoublyLinkList()
-dbls.append(1)
-dbls.append(2)
-dbls.append(3)
+dbls.append(11)
+dbls.append(22)
+dbls.append(33)
 let str = dbls.toString()
 console.log(str)
