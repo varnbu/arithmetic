@@ -145,10 +145,13 @@ class BinarySearchTree {
                     if (node.left === null) {
                         node = node.left
                         return node
-                    }
-                    if (node.right === null)
+                    }else if (node.right === null){
                         node = node.right
-                    return node
+                        return node
+                    }else{
+                    
+                    }
+                    
                 }
             }
         } else {
