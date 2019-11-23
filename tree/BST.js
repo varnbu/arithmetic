@@ -45,7 +45,9 @@ class BinarySearchTree {
     
     }
     
-    // 中序遍历
+    /*
+     * 中序遍历  一般用于排序
+     */
     inOrderTraverse (cb) {
         this.inOrderTraverseNode(this.root, cb)
     }
@@ -58,14 +60,33 @@ class BinarySearchTree {
         }
     }
     
-    // 先序遍历
-    preOrderTraverse () {
-    
+    /*
+     * 先序遍历 一般用于打印结构化的文档
+     */
+    preOrderTraverse (cb) {
+        this.preOrderTraverseNode(this.root, cb)
     }
     
-    // 后续遍历
-    postOrderTraverse () {
+    preOrderTraverseNode (node, cb) {
+        if (node) {
+            cb(node.key)
+            this.preOrderTraverseNode(node.left, cb)
+            this.preOrderTraverseNode(node.right, cb)
+        }
+    }
     
+    /*
+     * 后续遍历 应用： 计算一个目录及其子目录中所有文件所占空间的大小
+     */
+    postOrderTraverse (cb) {
+        this.postOrderTraverseNode(this.root,cb)
+    }
+    postOrderTraverseNode(node,cb){
+        if(node){
+            this.postOrderTraverseNode(node.left,cb)
+            this.postOrderTraverseNode(node.right,cb)
+            cb(node.key)
+        }
     }
     
     min () {
@@ -90,6 +111,12 @@ bst.insert(1)
 bst.insert(-6)
 console.log(bst)
 
-bst.inOrderTraverse((key) => {
+function log(key){
     console.log(key)
-})
+    
+}
+bst.inOrderTraverse(log)
+console.log('=============')
+bst.preOrderTraverse(log)
+console.log('=============')
+bst.postOrderTraverse(log)
