@@ -15,5 +15,31 @@ class BinarySearchTree {
     constructor (){
     
     }
+    insert(key){
+    
+    }
+    search(key){
+    
+    }
+    // 中序遍历
+    inOrderTraverse(){
+    
+    }
+    // 先序遍历
+    preOrderTraverse(){
+    
+    }
+    // 后续遍历
+    postOrderTraverse(){
+    
+    }
+    min(){
+    
+    }
+    max(){
+    
+    }
+    remove(key){
+    
+    }
 }
-
