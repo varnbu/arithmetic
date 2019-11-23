@@ -114,8 +114,46 @@ class BinarySearchTree {
     
     }
     
-    remove (key) {
+    _findMixNode (node) {
+        if (node) {
+            while (node && node.left) {
+                node = node.left
+            }
+            return node
+        } else {
+            return null
+        }
+    }
     
+    remove (key) {
+        this.root = this.removeNode(this.root, key)
+    }
+    
+    removeNode (node, key) {
+        if (node) {
+            if (key < node.key) {
+                node = this.removeNode(node.left, key)
+                return node
+            } else if (key > node.key) {
+                node = this.removeNode(node.right, key)
+                return node
+            } else {
+                if (node.left === null && node.right === null) {
+                    node = null
+                    return node
+                } else {
+                    if (node.left === null) {
+                        node = node.left
+                        return node
+                    }
+                    if (node.right === null)
+                        node = node.right
+                    return node
+                }
+            }
+        } else {
+            return null
+        }
     }
 }
 
@@ -144,3 +182,6 @@ let ru = bst.search(-6)
 let ru2 = bst.search(-66)
 console.log(ru)
 console.log(ru2)
+console.log('=============')
+let minNode = bst._findMixNode(bst.root)
+console.log(minNode)
