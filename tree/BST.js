@@ -12,34 +12,64 @@ class Node {
  */
 class BinarySearchTree {
     root = null
-    constructor (){
+    
+    constructor () {
+        this.root = null
+    }
+    
+    insert (key) {
+        let node = new Node(key)
+        if (this.root === null) {
+            this.root = node
+        } else {
+            this.insertNode(this.root, node)
+        }
+    }
+    
+    insertNode (node, newNode) {
+        if (newNode.key < node.key) {
+            if (node.left === null) {
+                node.left = newNode
+            } else {
+                this.insertNode(node.left, newNode)
+            }
+        } else {
+            if (node.right === null) {
+                node.right = newNode
+            } else {
+                this.insertNode(node.right, newNode)
+            }
+        }
+    }
+    
+    search (key) {
     
     }
-    insert(key){
     
-    }
-    search(key){
-    
-    }
     // 中序遍历
-    inOrderTraverse(){
+    inOrderTraverse () {
     
     }
+    
     // 先序遍历
-    preOrderTraverse(){
+    preOrderTraverse () {
     
     }
+    
     // 后续遍历
-    postOrderTraverse(){
+    postOrderTraverse () {
     
     }
-    min(){
+    
+    min () {
     
     }
-    max(){
+    
+    max () {
     
     }
-    remove(key){
+    
+    remove (key) {
     
     }
 }
