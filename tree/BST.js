@@ -42,7 +42,22 @@ class BinarySearchTree {
     }
     
     search (key) {
+        return this.searchNode(this.root, key)
+    }
     
+    searchNode (node, key) {
+        if (node) {
+            if (key < node.key) {
+                return this.searchNode(node.left, key)
+            } else if (key > node.key) {
+                return this.searchNode(node.right, key)
+            } else {
+                return node.key
+            }
+        } else {
+            return null
+        }
+        
     }
     
     /*
@@ -79,16 +94,18 @@ class BinarySearchTree {
      * 后续遍历 应用： 计算一个目录及其子目录中所有文件所占空间的大小
      */
     postOrderTraverse (cb) {
-        this.postOrderTraverseNode(this.root,cb)
+        this.postOrderTraverseNode(this.root, cb)
     }
-    postOrderTraverseNode(node,cb){
-        if(node){
-            this.postOrderTraverseNode(node.left,cb)
-            this.postOrderTraverseNode(node.right,cb)
+    
+    postOrderTraverseNode (node, cb) {
+        if (node) {
+            this.postOrderTraverseNode(node.left, cb)
+            this.postOrderTraverseNode(node.right, cb)
             cb(node.key)
         }
     }
     
+    // 搜索最大值与最小值只要找最左边或最右边的结点即可
     min () {
     
     }
@@ -111,12 +128,19 @@ bst.insert(1)
 bst.insert(-6)
 console.log(bst)
 
-function log(key){
+function log (key) {
     console.log(key)
     
 }
+
 bst.inOrderTraverse(log)
 console.log('=============')
 bst.preOrderTraverse(log)
 console.log('=============')
 bst.postOrderTraverse(log)
+console.log('=============')
+
+let ru = bst.search(-6)
+let ru2 = bst.search(-66)
+console.log(ru)
+console.log(ru2)
