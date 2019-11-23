@@ -11,7 +11,6 @@ class Node {
  * 只允许左侧节点的值比父节点小，右侧节点的值比父节点大
  */
 class BinarySearchTree {
-    root = null
     
     constructor () {
         this.root = null
@@ -47,8 +46,16 @@ class BinarySearchTree {
     }
     
     // 中序遍历
-    inOrderTraverse () {
+    inOrderTraverse (cb) {
+        this.inOrderTraverseNode(this.root, cb)
+    }
     
+    inOrderTraverseNode (node, cb) {
+        if (node) {
+            this.inOrderTraverseNode(node.left, cb)
+            cb(node.key)
+            this.inOrderTraverseNode(node.right, cb)
+        }
     }
     
     // 先序遍历
@@ -73,3 +80,16 @@ class BinarySearchTree {
     
     }
 }
+
+
+let bst = new BinarySearchTree()
+bst.insert(3)
+bst.insert(6)
+bst.insert(9)
+bst.insert(1)
+bst.insert(-6)
+console.log(bst)
+
+bst.inOrderTraverse((key) => {
+    console.log(key)
+})
