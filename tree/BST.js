@@ -149,9 +149,11 @@ class BinarySearchTree {
                         node = node.right
                         return node
                     }else{
-                    
+                        let aux = this._findMixNode(node.right)
+                        node.key = aux.key
+                        node.right = this.removeNode(node.right,aux.key)
+                        return node
                     }
-                    
                 }
             }
         } else {
