@@ -130,34 +130,34 @@ class BinarySearchTree {
     }
     
     removeNode (node, key) {
-        if (node) {
-            if (key < node.key) {
-                node = this.removeNode(node.left, key)
-                return node
-            } else if (key > node.key) {
-                node = this.removeNode(node.right, key)
-                return node
-            } else {
-                if (node.left === null && node.right === null) {
-                    node = null
-                    return node
-                } else {
-                    if (node.left === null) {
-                        node = node.left
-                        return node
-                    }else if (node.right === null){
-                        node = node.right
-                        return node
-                    }else{
-                        let aux = this._findMixNode(node.right)
-                        node.key = aux.key
-                        node.right = this.removeNode(node.right,aux.key)
-                        return node
-                    }
-                }
-            }
-        } else {
+        console.log('key', key)
+        if (node === null) {
             return null
+        }
+        if (key < node.key) {
+            node = this.removeNode(node.left, key)
+            return node
+        } else if (key > node.key) {
+            node = this.removeNode(node.right, key)
+            return node
+        } else {
+            if (node.left === null && node.right === null) {
+                node = null
+                return node
+            }
+            if (node.left === null) {
+                node = node.right
+                return node
+            }
+            if (node.right === null) {
+                node = node.left
+                return node
+            }
+            let aux = this._findMixNode(node.right)
+            console.log('aux', aux)
+            node.key = aux.key
+            node.right = this.removeNode(node.right, aux.key)
+            return node
         }
     }
 }
@@ -169,7 +169,7 @@ bst.insert(6)
 bst.insert(9)
 bst.insert(1)
 bst.insert(-6)
-console.log(bst)
+// console.log(bst)
 
 function log (key) {
     console.log(key)
@@ -177,16 +177,22 @@ function log (key) {
 }
 
 bst.inOrderTraverse(log)
-console.log('=============')
-bst.preOrderTraverse(log)
-console.log('=============')
-bst.postOrderTraverse(log)
-console.log('=============')
+// console.log('=============')
+// bst.preOrderTraverse(log)
+// console.log('=============')
+// bst.postOrderTraverse(log)
+// console.log('=============')
 
-let ru = bst.search(-6)
-let ru2 = bst.search(-66)
-console.log(ru)
-console.log(ru2)
-console.log('=============')
-let minNode = bst._findMixNode(bst.root)
-console.log(minNode)
+// let ru = bst.search(-6)
+// let ru2 = bst.search(-66)
+// console.log(ru)
+// console.log(ru2)
+// console.log('=============')
+// let minNode = bst._findMixNode(bst.root)
+// console.log(minNode)
+console.log('============= remove')
+bst.inOrderTraverse(log)
+console.log(bst)
+bst.remove(9)
+console.log("ks")
+bst.inOrderTraverse(log)
